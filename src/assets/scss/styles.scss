@@ -1,0 +1,26 @@
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/scss/bootstrap-grid.scss';
+@import '~bootstrap/scss/bootstrap-reboot.scss';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~animate.css/animate.css';
+
+$baseColor: #025E73;
+$secondary: #555;
+
+@import 'components/menu.scss';
+@import 'components/home.scss';
+@import 'components/preloader.scss';
+@import 'components/content.scss';
+@import 'components/social.scss';
+@import 'components/aboutUs/aboutUs.scss';
+@import 'components/aboutUs/icons.scss';
+@import 'components/aboutUs/team.scss';
+@import 'components/aboutUs/lorem.scss';
+
+
+body {
+  margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap');

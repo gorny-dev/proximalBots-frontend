@@ -1,0 +1,23 @@
+.social {
+  font-size: 1.6rem;
+  @extend .py-2;
+  @extend .d-flex;
+  @extend .justify-content-center;
+  @extend .w-100;
+
+
+
+  i {
+    @extend .px-3;
+    -webkit-transition: -webkit-transform .4s ease-in-out;
+    transition: transform .4s ease-in-out;
+    transition-duration: .4s;
+    color: $secondary;
+
+    &:hover {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+      color: $baseColor;
+    }
+  }
+}

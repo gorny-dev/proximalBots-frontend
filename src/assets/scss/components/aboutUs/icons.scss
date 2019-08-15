@@ -1,0 +1,30 @@
+.aboutUs__icons {
+  @extend .row;
+  @extend .justify-content-center;
+  @extend .text-center;
+  color: #232323;
+
+  .item {
+    @extend .px-5;
+    @extend .my-2;
+    @extend .col-md-2;
+    @extend .col-sm-3;
+    @extend .col-6;
+    transition: .5s;
+    &:hover{
+      color: $baseColor;
+
+    }
+
+    i {
+      @extend .px-2;
+      font-size: 4rem;
+
+    }
+
+    p {
+      font-size: .9rem;
+      @extend .py-2;
+    }
+  }
+}

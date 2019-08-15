@@ -1,0 +1,43 @@
+.pageContent {
+  @extend .w-100;
+  //min-height: 40vh;
+  @media screen and (max-width: 565px) {
+    //min-height: 20vh;
+  }
+
+  &__content {
+    @extend .d-flex;
+    @extend .align-items-center;
+    @extend .flex-column;
+
+    .body {
+      display: none;
+    }
+
+    .show {
+      @extend .d-block;
+    }
+
+    .hide {
+      @extend .d-none;
+    }
+
+  }
+
+}
+
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $baseColor;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: darken($baseColor, 10%);
+
+}

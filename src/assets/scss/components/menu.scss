@@ -1,0 +1,29 @@
+.menu {
+  list-style: none;
+  @extend .p-0;
+  @extend .py-1;
+  @extend .m-0;
+  text-transform: uppercase;
+  text-align: center;
+
+  li {
+    display: inline;
+    padding: .5rem .4rem .3rem .4rem;
+    color: $secondary;
+
+    a {
+      @extend .text-dark;
+      transition: .5s;
+
+      &:hover {
+        color: #025E73 !important;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+
+    @media screen and (max-width: 565px) {
+      display: block;
+    }
+  }
+}

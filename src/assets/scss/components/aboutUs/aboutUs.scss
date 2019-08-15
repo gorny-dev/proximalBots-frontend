@@ -1,0 +1,15 @@
+.aboutUs {
+  @extend .container;
+  @extend .my-5;
+
+  &__title {
+    font-size: 1.6rem;
+    @extend .text-center;
+    //@extend .font-weight-bold;
+    @extend .text-uppercase;
+    color: $secondary;
+    @extend .mt-4;
+  }
+
+
+}

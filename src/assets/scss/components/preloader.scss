@@ -1,0 +1,29 @@
+.preloader {
+  @extend .d-flex;
+  @extend .my-4;
+  height: 30vh;
+  &__item {
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background: $baseColor;
+    @extend .mx-2;
+    animation: preload .5s infinite;
+    &:nth-child(1){animation-delay: .1s}
+    &:nth-child(2){animation-delay: .2s}
+    &:nth-child(3){animation-delay: .3s}
+    &:nth-child(4){animation-delay: .4s}
+
+    @keyframes preload {
+      0%, 100% {
+        transform: scale(1)
+      }
+      50% {
+        transform: scale(1.2)
+      }
+    }
+  }
+}
+.hide{
+  display: none !important;
+}
