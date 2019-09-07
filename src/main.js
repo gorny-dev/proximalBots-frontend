@@ -26,5 +26,4 @@ Vue.prototype.$areasUrl = '/areas';
 Vue.prototype.$projectsUrl = '/projects';
 Vue.prototype.$teamUrl = '/teammates';
 Vue.prototype.$tasksUrl = '/tasks';
-Vue.prototype.$tasksCategoriesUrl = '/taskscategories';
-Vue.prototype.$preloadTime = process.env.VUE_APP_PRELOAD_TIME || 500;
+Vue.prototype.$preloadTime = process.env.VUE_APP_PRELOAD_TIME || 0;

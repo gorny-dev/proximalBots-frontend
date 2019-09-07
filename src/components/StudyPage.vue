@@ -3,43 +3,47 @@
         <preloader :loaded="loaded"/>
         <transition enter-active-class="animated fadeIn" name="contentFadeIn">
             <div class="study-page" v-if="loaded">
-                <div class="study__menu">
-                    <ul>
-                        <li v-for="category in tasksCategories">
-                            <router-link :to="{name: 'Study', params: {slug: category.slug}}">
-                                <i :class="category.icon"></i>{{category.name}}
-                            </router-link>
-                        </li>
-                    </ul>
-                </div>
                 <div class="study-page__title">
                     {{task.title}}
                 </div>
                 <div class="study-page__description">
-                    {{task.titleSm}}
+                    {{task.description}}
                 </div>
-                <div class="study-page__editor" v-for="editor in task.content">
-                    <div class="title">
-                        {{editor.text}}
-                    </div>
-                    <div class="description">
-                        {{editor.description}}
-                    </div>
-                    <div class="editor">
-                        <AceEditor
-                                :fontSize="14"
-                                :highlightActiveLine="true"
-                                :name="editor.text"
-                                :readOnly="true"
-                                :showGutter="true"
-                                :showPrintMargin="true"
-                                :value="editor.editor"
-                                :mode="editor.mode"
-                                theme="dracula"
-                                width="100%"
-                        />
-                    </div>
+                <div class="study__menu">
+                    <ul>
+                        <li v-for="language in taskLanguages" @click="changeActiveLanguage(language.slug)">
+                            <div class="content" :class="{active: language.slug===taskActiveLanguage}">
+                                <i :class="language.icon"></i>
+                                {{language.name}}
+                            </div>
+                        </li>
+                    </ul>
                 </div>
+                <preloader :loaded="taskLoaded"/>
+                <transition enter-active-class="animated fadeIn" name="contentFadeIn">
+                    <div v-if="taskLoaded && taskActiveSolution">
+                        <div class="study-page__editor" v-for="solution in taskActiveSolution.solutions">
+                            <div class="title">
+                                {{solution.text}}
+                            </div>
+                            <div class="description">
+                                {{solution.description}}
+                            </div>
+                            <div class="editor">
+                                <AceEditor
+                                        :fontSize="15"
+                                        :name="solution.text"
+                                        :readOnly="true"
+                                        :value="solution.editor.content"
+                                        :mode="solution.editor.lang"
+                                        theme="dracula"
+                                        width="100%"
+                                        height="700px"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </transition>
             </div>
         </transition>
     </div>
@@ -47,7 +51,6 @@
 
 <script>
     import Preloader from "../views/Preloader";
-    import brace from 'brace';
     import {Ace as AceEditor} from 'vue2-brace-editor';
     import 'brace/mode/c_cpp';
     import 'brace/mode/html';
@@ -67,8 +70,11 @@
         data() {
             return {
                 loaded: false,
+                taskLoaded: true,
                 task: undefined,
-                tasksCategories: undefined,
+                taskLanguages: undefined,
+                taskActiveLanguage: undefined,
+                taskActiveSolution: undefined,
             }
         },
         created() {
@@ -77,21 +83,22 @@
             }, this.$preloadTime);
         },
         mounted() {
-            this.axios.get(this.$apiUrl + this.$tasksUrl + '?slug=' + this.$route.params.slug).then(response => (this.task = response.data[0])); //request for tasks
-            this.axios.get(this.$apiUrl + this.$tasksCategoriesUrl).then(response => (this.tasksCategories = response.data)); //request for tasks categories
-
+            this.axios.get(this.$apiUrl + this.$tasksUrl + '?slug=' + this.$route.params.slug).then(response => {
+                (this.task = response.data[0]);
+                this.taskLanguages = this.task.content;
+            }); //request for tasks
         },
         methods: {
-            editorInit: function () {
-                //required for editor
-                require('brace/ext/language_tools');
-                require('brace/mode/c_cpp');
-                require('brace/theme/twilight');
-                require('brace/snippets/javascript');
-
-                if (this.$refs.editor1.editor) this.$refs.editor1.editor.setOption("readOnly", true);
-
+            changeActiveLanguage(slug) {
+                this.taskLoaded = false;
+                this.taskActiveLanguage = slug;
+                for (let solution in this.task.content) {
+                    if (this.taskActiveLanguage === solution) this.taskActiveSolution = this.task.content[solution];
+                }
+                setTimeout(() => {
+                    this.taskLoaded = true;
+                }, this.$preloadTime)
             },
-        }
+        },
     }
 </script>

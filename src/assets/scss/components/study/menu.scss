@@ -1,28 +1,32 @@
 .study__menu {
   @extend .py-3;
+  transition: 0s;
   ul {
     @extend .px-0;
     font-size: 1.3rem;
     li {
-      display: inline;
+      display: inline-block;
       @extend .px-3;
       &:first-child{
         padding-left: 0 !important;
       }
-      a{
-        color: $secondary;
-        transition: .5s;
-        &:hover{
-          color: var(--basecolor);
-          text-decoration: none;
-        }
+      .content{
+        @extend .d-flex;
+        @extend .flex-column;
+        @extend .align-items-center;
+        //transition: .5s;
+        transition-delay: 0s;
         i{
-          @extend .pr-2;
-          font-size: 1.5rem;
+          @extend .p-3;
+          font-size: 3rem;
+        }
+        &:hover{
+          //color: var(--basecolor);
+          cursor: pointer;
         }
       }
-      .router-link-active{
-        color: var(--basecolor) !important;
+      .active{
+        color: var(--basecolor);
       }
     }
   }

@@ -1,5 +1,6 @@
 .study{
   @extend .container;
+  transition: 0s;
   &__wrapper{
     @extend .row;
   }
