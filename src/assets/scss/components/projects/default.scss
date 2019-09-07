@@ -1,0 +1,13 @@
+.projects{
+  @extend .container;
+  transition: 0s;
+  color: $secondary;
+  &__title{
+    @extend .pt-4;
+    @extend .text-center;
+    font-size: 1.6rem;
+  }
+  &__wrapper{
+    @extend .row;
+  }
+}

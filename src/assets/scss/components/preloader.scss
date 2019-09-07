@@ -1,12 +1,14 @@
 .preloader {
   @extend .d-flex;
+  @extend .justify-content-center;
+  @extend .align-items-center;
   @extend .my-4;
-  height: 30vh;
+  //height: 30vh;
   &__item {
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
     border-radius: 100%;
-    background: $baseColor;
+    background: var(--basecolor);
     @extend .mx-2;
     animation: preload .5s infinite;
     &:nth-child(1){animation-delay: .1s}
@@ -19,7 +21,7 @@
         transform: scale(1)
       }
       50% {
-        transform: scale(1.2)
+        transform: scale(2)
       }
     }
   }

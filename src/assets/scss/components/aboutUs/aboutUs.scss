@@ -1,6 +1,7 @@
 .aboutUs {
   @extend .container;
   @extend .my-5;
+  color: $secondary;
 
   &__title {
     font-size: 1.6rem;

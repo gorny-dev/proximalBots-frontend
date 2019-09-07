@@ -1,0 +1,29 @@
+.study__menu {
+  @extend .py-3;
+  ul {
+    @extend .px-0;
+    font-size: 1.3rem;
+    li {
+      display: inline;
+      @extend .px-3;
+      &:first-child{
+        padding-left: 0 !important;
+      }
+      a{
+        color: $secondary;
+        transition: .5s;
+        &:hover{
+          color: var(--basecolor);
+          text-decoration: none;
+        }
+        i{
+          @extend .pr-2;
+          font-size: 1.5rem;
+        }
+      }
+      .router-link-active{
+        color: var(--basecolor) !important;
+      }
+    }
+  }
+}

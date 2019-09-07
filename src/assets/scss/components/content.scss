@@ -4,6 +4,7 @@
   @media screen and (max-width: 565px) {
     //min-height: 20vh;
   }
+  @extend .pb-5;
 
   &__content {
     @extend .d-flex;
@@ -29,15 +30,18 @@
 
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $baseColor;
+  background: $secondary;
   border-radius: 10px;
+
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: darken($baseColor, 10%);
 
+}
+::-webkit-scrollbar-track{
+  background: grey;
 }

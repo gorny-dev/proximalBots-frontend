@@ -1,0 +1,21 @@
+.study__taskList{
+  @extend .container;
+  ul{
+    list-style-type: decimal;
+    li{
+      @extend .py-2;
+      transition: .5s;
+      &:hover{
+        color: var(--basecolor);
+        cursor: pointer;
+      }
+      a{
+        color: inherit;
+        &:hover{
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

@@ -9,6 +9,7 @@
   top: 35%;
   transition: .5s all;
   font-family: 'Lexend Deca', sans-serif;
+
   &StickyToTop {
     @extend .justify-content-between;
     top: 2%;
@@ -17,8 +18,10 @@
   &__title {
     span {
       font-size: 60px;
-      color: $baseColor;
+      color: var(--basecolor);
       font-family: 'Kaushan Script', cursive;
+      @extend .d-flex;
+      @extend .justify-content-center;
       @extend .font-weight-bold;
       @media screen and (max-width: 400px) {
         font-size: 45px;
@@ -41,8 +44,12 @@
 
   animation: enter .5s;
   @keyframes enter {
-      from{ opacity: 0;}
-      to{opacity: 100%;}
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 100%;
+    }
   }
 
 }
@@ -50,7 +57,11 @@
 .animationLeave {
   animation: leave .5s;
   @keyframes leave {
-    from{ opacity: 100%;}
-    to{opacity: 0;}
+    from {
+      opacity: 100%;
+    }
+    to {
+      opacity: 0;
+    }
   }
 }

@@ -1,0 +1,131 @@
+.news {
+  @extend .container ;
+ color: $secondary;
+  &__title {
+    font-size: 1.6rem;
+    @extend .text-center;
+    @extend .pt-4;
+    //@extend .pb-1;
+    //border-bottom: solid 2px $baseColor;
+  }
+
+  &__wrapper {
+    @extend .row;
+    @extend .my-3;
+    max-height: 600px;
+    overflow-y: scroll;
+  }
+
+  &__item {
+    @extend .col-xl-4;
+    @extend .col-sm-6;
+    @extend .col-12;
+    @extend .p-4;
+
+    .content {
+      //@extend .row;
+      //background: darken($baseColor, 10%);
+      //color: white;
+      @extend .justify-content-center;
+      animation-delay: .25s;
+      a {
+        color: inherit;
+        transition: .5s;
+
+        &:hover {
+          color: var(--basecolor);
+          text-decoration: none;
+
+          .content__picture img{
+            transform: scale(1.1);
+
+            &:before {
+
+            }
+          }
+
+        }
+      }
+
+      &__picture {
+        //@extend .col-md-3;
+        background-size: cover;
+        background-position: center;
+        //width: 140px;
+        //height: 140px;
+        //height: 200px;
+        //width: 200px;
+        max-width: 200px;
+        @extend .mx-auto;
+        @extend .my-3;
+        //border-radius: 100%;
+        overflow: hidden;
+        border-radius: 100%;
+        @extend .d-flex;
+        //@extend .flex-column;
+        @extend .justify-content-center;
+
+        img {
+          height: 200px;
+          width: auto;
+          transition: .5s;
+          animation: show .5s;
+          @keyframes show {
+            from {
+              opacity: 0
+            }
+
+            to {
+              opacity: 100%
+            }
+          }
+
+
+        }
+      }
+
+      &__wrapper {
+        //@extend .col-md-9;
+        //min-height: 300px;
+        @extend .py-3;
+        @extend .px-4;
+
+        .date {
+          font-size: .9rem;
+          @extend .text-right;
+        }
+
+        .title {
+          font-size: 1.2rem;
+          @extend .font-weight-bold;
+          //@extend .text-center;
+          @extend .py-3;
+
+          &--sm {
+            font-size: .9rem;
+            font-weight: normal;
+          }
+        }
+
+        .icons {
+
+          @extend .text-right;
+
+          i {
+            font-size: 1.3rem;
+            //color: #3b5998;
+          }
+
+          a {
+            color: inherit;
+
+            &:hover {
+              color: inherit;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

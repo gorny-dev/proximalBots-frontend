@@ -12,11 +12,12 @@
     color: $secondary;
 
     a {
-      @extend .text-dark;
+      //@extend .text-dark;
       transition: .5s;
+      color: inherit;
 
       &:hover {
-        color: #025E73 !important;
+        color: $secondary;
         cursor: pointer;
         text-decoration: none;
       }

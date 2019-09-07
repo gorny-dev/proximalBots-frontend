@@ -1,0 +1,42 @@
+.menu-icons {
+  position: fixed;
+  @extend .d-flex;
+  @extend .flex-column;
+  top: 0;
+  left: 15px;
+  @extend .p-3;
+  @media screen and (max-width: 890px) {
+    bottom: -75px;
+    top: auto;
+    flex-direction: row !important;
+    left: auto;
+    right: auto;
+    position: absolute;
+  }
+
+  &__item {
+    color: grey;
+    @extend .p-2;
+    i {
+      font-size: 1.4rem;
+      //@extend .d-flex;
+      @extend .justify-content-center;
+      @media screen and (max-width: 890px) {
+        display: flex;
+      }
+    }
+    span{
+      font-size: .85rem;
+      color: $secondary;
+    }
+    div{
+      @media screen and (max-width: 890px) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}

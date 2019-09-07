@@ -1,0 +1,6 @@
+.study{
+  @extend .container;
+  &__wrapper{
+    @extend .row;
+  }
+}

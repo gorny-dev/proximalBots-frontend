@@ -10,4 +10,4 @@
     export default{
         name: 'Social',
     }
-</script>
+</script>z

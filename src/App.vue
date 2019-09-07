@@ -1,80 +1,55 @@
 <template>
     <div id="app">
-        <div class="home" v-bind:class="{ homeStickyToTop: isStickyToTop}">
-
-            <div class="home__title">
-                <router-link to="/"><span @click="isStickyToTop = false">ProximalBots</span></router-link>
-            </div>
-
-            <div id="nav">
-                <ul class="menu">
-                    <li v-for="link in menu">
-                        <router-link :to="'/' + link.slug">
-                            <span @click="isStickyToTop = true">{{link.title}}</span>
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
-            <transition enter-active-class="animated fadeIn" name="contentFadeIn">
-                <social v-if="!isStickyToTop"/>
+        <div :class="{ homeStickyToTop: isStickyToTop}" class="home">
+            <transition enter-active-class="animated fadeIn">
+                <div>
+                    <logo />
+                    <navigation />
+                    <social v-if="!isStickyToTop" />
+                </div>
             </transition>
             <div class="pageContent">
-
                 <transition enter-active-class="animationEnter" leave-active-class="animationLeave" mode="out-in"
                             name="routerAnimation">
-                    <router-view/>
+                    <router-view />
                 </transition>
-
             </div>
-
+            <transition enter-active-class="animated fadeIn">
+                <menu-icons />
+            </transition>
         </div>
-
     </div>
 </template>
 
 <script>
-
     import Social from "./views/Social";
-
+    import Menu from "./views/Menu";
+    import MenuIcons from "./views/MenuIcons";
+    import Logo from "./views/Logo";
     export default {
-
         components: {
             'social': Social,
+            'navigation': Menu, //nice to know the <menu> tag in HTML :)
+            'logo': Logo,
+            'menu-icons': MenuIcons
         },
-
         data() {
             return {
-                menu: {
-                    about: {
-                        title: 'O nas',
-                        slug: 'o-nas'
-                    },
-                    news: {
-                        title: 'Aktualnośći',
-                        slug: 'aktualnosci'
-                    },
-                    projects: {
-                        title: 'Projekty',
-                        slug: 'projekty'
-                    },
-                    study: {
-                        title: 'Pomoce naukowe',
-                        slug: 'pomoce-naukowe'
-                    },
-                },
                 isStickyToTop: false,
             }
         },
         mounted() {
             this.stickyToTop();
         },
+        watch: {
+            '$route.params': function () {
+                this.stickyToTop();
+            }
+        },
         methods: {
-
             stickyToTop() {
                 this.isStickyToTop = window.location.pathname !== '/';
-            }
+            },
         }
-
     }
-
 </script>

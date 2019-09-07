@@ -1,0 +1,25 @@
+.study-page{
+  @extend .container;
+  @extend .py-3;
+  &__title{
+    @extend .py-1;
+    font-size: 1.7rem;
+  }
+  &__description{
+    font-size: .9rem;
+  }
+  &__editor{
+    @extend .py-4;
+    .title{
+      @extend .pt-1;
+      font-size: 1.1rem;
+    }
+    .editor{
+      @extend .py-2;
+    }
+    .description{
+      font-size: .85rem;
+      @extend .py-1;
+    }
+  }
+}
