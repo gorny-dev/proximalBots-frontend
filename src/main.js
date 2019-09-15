@@ -23,10 +23,10 @@ new Vue({
 
 }).$mount('#app');
 
-Vue.prototype.$apiUrl = 'http://192.168.100.82:1337'; //base URL for our api app
-Vue.prototype.$areasUrl = '/areas';
-Vue.prototype.$projectsUrl = '/projects';
-Vue.prototype.$postUrl = '/posts';
-Vue.prototype.$teamUrl = '/teammates';
-Vue.prototype.$tasksUrl = '/tasks';
+Vue.prototype.$apiUrl = process.env.VUE_APP_API_LINK_MAIN || 'http://localhost:1337'; //base URL for our api app
+Vue.prototype.$areasUrl = process.env.VUE_APP_API_LINK_AREAS || '/areas';
+Vue.prototype.$projectsUrl = process.env.VUE_APP_API_LINK_PROJECTS || '/projects';
+Vue.prototype.$postUrl = process.env.VUE_APP_API_LINK_POSTS || '/posts';
+Vue.prototype.$teamUrl = process.env.VUE_APP_API_LINK_TEAM || '/teammates';
+Vue.prototype.$tasksUrl = process.env.VUE_APP_API_LINK_TASKS || '/tasks';
 Vue.prototype.$preloadTime = process.env.VUE_APP_PRELOAD_TIME || 0;
