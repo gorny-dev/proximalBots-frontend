@@ -1,6 +1,8 @@
 .study{
   @extend .container;
   transition: 0s;
+  @extend .my-sm-5;
+  @extend .my-3;
   &__wrapper{
     @extend .row;
   }

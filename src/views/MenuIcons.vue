@@ -18,22 +18,22 @@
                     </span>
             </div>
         </div>
-        <div class="menu-icons__item">
-            <div @mouseenter="showSupportUs=true" @mouseleave="showSupportUs=false">
-                <i class="fas fa-donate animated fadeIn"></i>
-                <span :class="{fadeIn: showSupportUs, 'd-none': !showSupportUs}" class="animated">
-                     Wesprzyj nas
-                    </span>
-            </div>
-        </div>
-        <div class="menu-icons__item">
-            <div @mouseenter="showCookiesInfo=true" @mouseleave="showCookiesInfo=false">
-                <i class="fas fa-cookie-bite animated fadeIn"></i>
-                <span :class="{fadeIn: showCookiesInfo, 'd-none': !showCookiesInfo}" class="animated">
-                     Używamy cookies.
-                    </span>
-            </div>
-        </div>
+<!--        <div class="menu-icons__item">-->
+<!--            <div @mouseenter="showSupportUs=true" @mouseleave="showSupportUs=false">-->
+<!--                <i class="fas fa-donate animated fadeIn"></i>-->
+<!--                <span :class="{fadeIn: showSupportUs, 'd-none': !showSupportUs}" class="animated">-->
+<!--                     Wesprzyj nas-->
+<!--                    </span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="menu-icons__item">-->
+<!--            <div @mouseenter="showCookiesInfo=true" @mouseleave="showCookiesInfo=false">-->
+<!--                <i class="fas fa-cookie-bite animated fadeIn"></i>-->
+<!--                <span :class="{fadeIn: showCookiesInfo, 'd-none': !showCookiesInfo}" class="animated">-->
+<!--                     Używamy cookies.-->
+<!--                    </span>-->
+<!--            </div>-->
+<!--        </div>-->
 
     </div>
 </template>

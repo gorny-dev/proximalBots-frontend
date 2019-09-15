@@ -1,30 +1,94 @@
-.menu {
-  list-style: none;
-  @extend .p-0;
-  @extend .py-1;
-  @extend .m-0;
-  text-transform: uppercase;
-  text-align: center;
-
-  li {
-    display: inline;
-    padding: .5rem .4rem .3rem .4rem;
-    color: $secondary;
-
-    a {
-      //@extend .text-dark;
-      transition: .5s;
-      color: inherit;
-
-      &:hover {
-        color: $secondary;
-        cursor: pointer;
-        text-decoration: none;
-      }
+#nav {
+  .menu {
+    list-style: none;
+    @extend .p-0;
+    @extend .py-1;
+    @extend .m-0;
+    text-transform: uppercase;
+    text-align: center;
+    @extend .d-sm-block;
+    transition: .5s height;
+    overflow: hidden;
+    @media screen and (max-width: 566px) {
+      height: 0px;
     }
 
-    @media screen and (max-width: 565px) {
-      display: block;
+    li {
+      display: inline;
+      padding: .5rem .4rem .3rem .4rem;
+      color: $secondary;
+
+      a {
+        //@extend .text-dark;
+        transition: .5s;
+        color: inherit;
+
+        &:hover {
+          color: $secondary;
+          cursor: pointer;
+          text-decoration: none;
+        }
+      }
+
+      @media screen and (max-width: 565px) {
+        display: block;
+      }
+    }
+  }
+
+  .show {
+    height: 40px;
+    @media screen and (max-width: 567px) {
+      height: 160px;
+    }
+  }
+
+  .hamburger {
+    @extend .w-100;
+    @extend .d-flex;
+    @extend .d-sm-none;
+    @extend .justify-content-center;
+    @extend .py-3;
+
+    button {
+      width: 40px;
+      height: 35px;
+      border: 0;
+      border-top: 3px solid $secondary;
+      background: transparent;
+      position: relative;
+      transition: 0.3s transform linear;
+
+      &:after, &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-top: 3px solid $secondary;
+        transform: translateY(10px);
+      }
+
+      &:after {
+        transform: translateY(25px);
+        transition: 0.3s transform linear;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+    }
+
+    .active {
+      transform: rotate(45deg) translateY(5px);
+      border: none;
+      outline: none;
+
+      &:after {
+        transform: rotate(-90deg) translateX(-10px);
+      }
     }
   }
 }
+

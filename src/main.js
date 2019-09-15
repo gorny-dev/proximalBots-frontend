@@ -21,9 +21,10 @@ new Vue({
 
 }).$mount('#app');
 
-Vue.prototype.$apiUrl = 'http://localhost:1337'; //base URL for our api app
+Vue.prototype.$apiUrl = 'http://192.168.100.82:1337'; //base URL for our api app
 Vue.prototype.$areasUrl = '/areas';
 Vue.prototype.$projectsUrl = '/projects';
+Vue.prototype.$postUrl = '/posts';
 Vue.prototype.$teamUrl = '/teammates';
 Vue.prototype.$tasksUrl = '/tasks';
 Vue.prototype.$preloadTime = process.env.VUE_APP_PRELOAD_TIME || 0;

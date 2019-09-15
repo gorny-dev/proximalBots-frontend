@@ -54,6 +54,7 @@
 </template>
 <script>
     import Preloader from "../views/Preloader";
+
     export default {
         components: {
             'preloader': Preloader,
@@ -64,6 +65,7 @@
                 categorySlug: undefined,
                 loadCategory: false, //preloader param
                 loaded: false, //preloader param
+                area: undefined,
             }
         },
         created() {
@@ -88,20 +90,20 @@
         },
         computed: {
             categoryProjects() {
-                let Projects = []; //an object to be returned
-                let project_index = 0; //an index variable for Projects[]
-                if (this.categorySlug) { //if exist category slug
-                    this.projects.filter(project => { //filter projects (response from request)
-                        for (let i in project.areas) { //checking all areas in project
-                            if (project.areas[i].slug === this.categorySlug) { //if area of current project contains slug === this.categorySlug
-                                Projects[project_index] = project; //push project to Projects
-                                project_index++; //make index variable for Projects[] +1
+                    let Projects = []; //an object to be returned
+                    let project_index = 0; //an index variable for Projects[]
+                    if (this.categorySlug) { //if exist category slug
+                        this.projects.filter(project => { //filter projects (response from request)
+                            for (let i in project.areas) { //checking all areas in project
+                                if (project.areas[i].slug === this.categorySlug) { //if area of current project contains slug === this.categorySlug
+                                    Projects[project_index] = project; //push project to Projects
+                                    project_index++; //make index variable for Projects[] +1
+                                }
                             }
-                        }
-                    });
-                    return Projects; //return Projects into categoryProjects
-                } else return this.projects; //if category slug does not exist return all projects from response to categoryProjects
-            }
+                        });
+                        return Projects; //return Projects into categoryProjects
+                    } else return this.projects; //if category slug does not exist return all projects from response to categoryProjects
+                }
         },
         methods: {
             routerPush(slug) { //function called when clicked on any menu item, slug - slug of area that wanna be displayed

@@ -9,7 +9,9 @@
   top: 35%;
   transition: .5s all;
   font-family: 'Lexend Deca', sans-serif;
-
+  @media screen and (max-width: 566px){
+    top: 5%;
+  }
   &StickyToTop {
     @extend .justify-content-between;
     top: 2%;

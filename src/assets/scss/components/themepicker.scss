@@ -6,12 +6,9 @@
   left: 15px;
   @extend .p-3;
   @media screen and (max-width: 890px) {
-    bottom: -75px;
+    bottom: 0;
     top: auto;
-    flex-direction: row !important;
-    left: auto;
-    right: auto;
-    position: absolute;
+    left: 5px;
   }
 
   &__item {
@@ -23,16 +20,21 @@
       @extend .justify-content-center;
       @media screen and (max-width: 890px) {
         display: flex;
+        padding-right: 10px;
       }
     }
     span{
       font-size: .85rem;
       color: $secondary;
+      //@media screen and (max-width: 890px){
+      //  display: block !important;
+      //  animation: none;
+      //}
     }
     div{
       @media screen and (max-width: 890px) {
         display: flex;
-        flex-direction: column;
+        //flex-direction: column;
       }
     }
     &:hover{

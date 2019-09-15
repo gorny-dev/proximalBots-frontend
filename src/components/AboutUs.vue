@@ -27,7 +27,7 @@
                 <div class="aboutUs__team">
                     <div class="item" v-for="item in team">
                         <div class="item__avatar" v-if="item.avatar">
-                            <img v-lazy="apiUrl + '/' +item.avatar.url">
+                            <img v-lazy="apiUrl + item.avatar.url ">
                         </div>
                         <div class="item__wrapper">
                             <div class="item__line-wrapper">
@@ -77,6 +77,6 @@
         mounted() {
             this.axios.get(this.$apiUrl + this.$areasUrl).then(response => (this.area = response.data)); //request for areas
             this.axios.get(this.$apiUrl + this.$teamUrl).then(response => (this.team = response.data)); //request for team
-        }
+        },
     }
 </script>

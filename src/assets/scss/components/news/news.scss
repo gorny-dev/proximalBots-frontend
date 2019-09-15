@@ -48,21 +48,14 @@
       }
 
       &__picture {
-        //@extend .col-md-3;
         background-size: cover;
         background-position: center;
-        //width: 140px;
-        //height: 140px;
-        //height: 200px;
-        //width: 200px;
         max-width: 200px;
         @extend .mx-auto;
         @extend .my-3;
-        //border-radius: 100%;
         overflow: hidden;
         border-radius: 100%;
         @extend .d-flex;
-        //@extend .flex-column;
         @extend .justify-content-center;
 
         img {

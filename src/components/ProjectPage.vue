@@ -6,8 +6,10 @@
                 <div class="project-page__area">
                     <div class="item" v-for="item in area">
                         <span :class="doesBelong(item.id)">
-                        <i :class="item.icon">
-                        </i>
+                            <a :href="'../' + projectsLink + item.slug">
+                                <i :class="item.icon">
+                                </i>
+                            </a>
                         </span>
                     </div>
                 </div>
@@ -35,6 +37,8 @@
         data() {
             return {
                 loaded: false, //preloader param
+                area: undefined,
+                projectsLink: 'projekty/' //todo: make links depends on fe. language
             }
         },
         created() {

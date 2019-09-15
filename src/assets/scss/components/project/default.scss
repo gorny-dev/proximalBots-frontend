@@ -7,6 +7,9 @@
     .item{
       @extend .px-3;
       font-size: 1.8rem;
+      a{
+        color: inherit;
+      }
       i{
         transition: .5s;
       }

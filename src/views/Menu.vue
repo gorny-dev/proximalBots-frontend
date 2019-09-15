@@ -1,6 +1,9 @@
 <template>
     <div id="nav">
-        <ul class="menu">
+        <div :class="hamburgerClass">
+            <button  @click="hamburgerClick('button')" :class="{active: hamburger}"></button>
+        </div>
+        <ul class="menu" :class="menuClass" @click="hamburgerClick()">
             <li v-for="link in menu">
                 <router-link :to="'/' + link.slug">
                     <span @click="isStickyToTop = true">{{link.title}}</span>
@@ -15,6 +18,8 @@
         name: 'Menu',
         data(){
             return{
+                hamburger: false,
+                url: undefined,
                 menu: {
                     about: {
                         title: 'O nas',
@@ -33,6 +38,28 @@
                         slug: 'pomoce-naukowe'
                     },
                 },
+            }
+        },
+        methods: {
+            hamburgerClick(source){
+                if(this.url !== '/') source === 'button' ? this.hamburger = !this.hamburger : this.hamburger = false;
+            }
+        },
+        mounted(){
+            this.url = window.location.pathname;
+        },
+        computed: {
+            hamburgerClass(){
+                if(this.url === '/') return 'd-none';
+                else return 'hamburger';
+            },
+            menuClass(){
+               if(this.url === '/' || this.hamburger) return 'show';
+            }
+        },
+        watch: {
+            '$route': function() {
+                this.url = window.location.pathname;
             }
         }
     }
