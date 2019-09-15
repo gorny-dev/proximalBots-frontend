@@ -5,6 +5,7 @@ import router from './router'
 import VueLazyload from 'vue-lazyload'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueSession from 'vue-session'
 
 //todo: wgrać własne obrazki
 Vue.use(VueLazyload, {
@@ -14,7 +15,8 @@ Vue.use(VueLazyload, {
     attempt: 1
 });
 Vue.use(VueAxios, axios);
-Vue.config.productionTip = false
+Vue.use(VueSession);
+Vue.config.productionTip = false;
 new Vue({
     router,
     render: h => h(App),

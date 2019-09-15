@@ -50,29 +50,38 @@
             }
         },
         mounted(){
-            this.colorSwitch(this.checkHour());
+
+            if(this.$session.exists() && this.$session.has('theme')){
+                if(this.$session.get('theme') === 'light') this.colorSwitch('light');
+                else if (this.$session.get('theme') === 'dark') this.colorSwitch('dark');
+            }
+            else this.colorSwitch(this.checkHour());
         },
         methods: {
             checkHour() {
-                var hour = new Date().getHours();
+                let hour = new Date().getHours();
                 if (hour > 21 || hour < 5) return 'dark';
                 return 'light';
             },
-
-            //todo: dodać kolory do wyboru w config-file jakims
-
+            //todo: add colors in some config file
+            setLight(){
+                let style = document.documentElement.style;
+                this.$session.set('theme','dark');
+                style.setProperty('--basecolor', '#009abd');
+                style.setProperty('--background', '#222');
+                style.setProperty('--primary', '#efefef');
+            },
+            setDark(){
+                let style = document.documentElement.style;
+                this.$session.set('theme','light');
+                style.setProperty('--basecolor', '#025e73');
+                style.setProperty('--background', '#fff');
+                style.setProperty('--primary', '#343434');
+            },
             colorSwitch(color) {
                 this.colorMode = color;
-                var style = document.documentElement.style;
-                if (this.colorMode == 'dark') {
-                    style.setProperty('--basecolor', '#009abd');
-                    style.setProperty('--background', '#222');
-                    style.setProperty('--primary', '#efefef');
-                } else if (this.colorMode == 'light') {
-                    style.setProperty('--basecolor', '#025e73');
-                    style.setProperty('--background', '#fff');
-                    style.setProperty('--primary', '#343434');
-                }
+                if (this.colorMode === 'dark') this.setLight();
+                else if (this.colorMode === 'light') this.setDark();
             }
         }
     }
