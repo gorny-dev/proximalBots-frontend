@@ -6,6 +6,8 @@ import VueLazyload from 'vue-lazyload'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueSession from 'vue-session'
+import VueMoment from 'vue-moment';
+
 
 //todo: wgrać własne obrazki
 Vue.use(VueLazyload, {
@@ -16,6 +18,7 @@ Vue.use(VueLazyload, {
 });
 Vue.use(VueAxios, axios);
 Vue.use(VueSession);
+Vue.use(VueMoment);
 Vue.config.productionTip = false;
 new Vue({
     router,

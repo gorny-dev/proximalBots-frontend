@@ -61,7 +61,8 @@
         },
         computed: {
             getPosts(){
-                return this.posts.slice(0, this.limitNumber)
+                if (this.posts) return this.posts.slice(0, this.limitNumber);
+                else return [];
             },
             getAmountOfPosts(){
                 return this.posts.length;
