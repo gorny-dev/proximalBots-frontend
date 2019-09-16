@@ -43,7 +43,7 @@
                             <div class="item__text item__text--state">{{item.function}}</div>
                             <div class="item__text item__text--description">{{item.description}}</div>
                             <div class="item__icons">
-                                <div class="icons-item" v-for="icon in item.icons">
+                                <div class="icons-item" v-for="icon in item.skills">
                                     <i :class="icon.icon"></i>
                                 </div>
                             </div>
