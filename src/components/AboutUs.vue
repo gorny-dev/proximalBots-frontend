@@ -67,7 +67,8 @@
             return {
                 area: undefined,
                 team: undefined,
-                loaded: false, //preloader param
+                loadedAreas: false,
+                loadedTeam: false,
                 apiUrl: this.$apiUrl, //api URL for displaying avatars
             }
         },
@@ -77,8 +78,19 @@
             }, this.$preloadTime); //preload animation
         },
         mounted() {
-            this.axios.get(this.$apiUrl + this.$areasUrl).then(response => (this.area = response.data)); //request for areas
-            this.axios.get(this.$apiUrl + this.$teamUrl).then(response => (this.team = response.data)); //request for team
+            this.axios.get(this.$apiUrl + this.$areasUrl).then(response => {
+                this.area = response.data;
+                this.loadedAreas = true;
+            }); //request for areas
+            this.axios.get(this.$apiUrl + this.$teamUrl).then(response => {
+                this.team = response.data;
+                this.loadedTeam = true;
+            }); //request for team
         },
+        computed:{
+            loaded(){
+                return this.loadedAreas && this.loadedTeam;
+            }
+        }
     }
 </script>
