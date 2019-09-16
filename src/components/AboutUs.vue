@@ -65,6 +65,8 @@
         name: 'AboutUs',
         data() {
             return {
+                area: undefined,
+                team: undefined,
                 loaded: false, //preloader param
                 apiUrl: this.$apiUrl, //api URL for displaying avatars
             }

@@ -38,17 +38,18 @@
             return {
                 loaded: false, //preloader param
                 area: undefined,
-                projectsLink: 'projekty/' //todo: make links depends on fe. language
+                projectsLink: 'projekty/', //todo: make links depends on fe. language
+                project: undefined,
             }
         },
         created() {
             setTimeout(() => {
                 this.loaded = true; //preloader param
-                if (!this.project) this.$router.push('/projekty'); //if project does not exist redirect to projects
             }, this.$preloadTime); //preload animation
         },
         mounted() {
-            this.axios.get(this.$apiUrl + this.$projectsUrl + '?slug=' + this.$route.params.slug).then(response => (this.project = response.data[0])); //request for current project
+            this.axios.get(this.$apiUrl + this.$projectsUrl + '?slug=' + this.$route.params.slug).then(response => (this.project = response.data[0]))
+                .catch(() => this.project = []); //request for current project
             this.axios.get(this.$apiUrl + this.$areasUrl).then(response => (this.area = response.data)); //request for areas
         },
         methods: {
@@ -59,6 +60,6 @@
                     }
                 }
             }
-        }
+        },
     }
 </script>

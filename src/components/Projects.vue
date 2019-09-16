@@ -66,6 +66,7 @@
                 loadCategory: false, //preloader param
                 loaded: false, //preloader param
                 area: undefined,
+                projects: undefined,
             }
         },
         created() {
@@ -90,6 +91,7 @@
         },
         computed: {
             categoryProjects() {
+                if (this.projects !== undefined) {
                     let Projects = []; //an object to be returned
                     let project_index = 0; //an index variable for Projects[]
                     if (this.categorySlug) { //if exist category slug
@@ -103,7 +105,8 @@
                         });
                         return Projects; //return Projects into categoryProjects
                     } else return this.projects; //if category slug does not exist return all projects from response to categoryProjects
-                }
+                }else return [];
+            }
         },
         methods: {
             routerPush(slug) { //function called when clicked on any menu item, slug - slug of area that wanna be displayed

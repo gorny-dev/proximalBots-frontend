@@ -2,7 +2,7 @@
     <div class="pageContent__content">
         <preloader :loaded="loaded"/>
         <transition enter-active-class="animated fadeIn" name="contentFadeIn">
-            <div class="study-page" v-if="loaded">
+            <div class="study-page" v-if="loaded && task">
                 <div class="study-page__title">
                     {{task.title}}
                 </div>
@@ -70,8 +70,8 @@
         data() {
             return {
                 loaded: false,
-                taskLoaded: true,
                 task: undefined,
+                taskLoaded: true,
                 taskLanguages: undefined,
                 taskActiveLanguage: undefined,
                 taskActiveSolution: undefined,

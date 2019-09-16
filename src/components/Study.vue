@@ -7,9 +7,8 @@
                     Wybierz algorytm
                 </div>
                 <div class="study__wrapper " >
-                    <preloader :loaded="loadedTasks"/>
-                    <div class="study__taskList animated fadeIn" v-if="loadedTasks">
-                        <ul v-if="loadedTasks">
+                    <div class="study__taskList animated fadeIn" v-if="loaded">
+                        <ul>
                             <li v-for="item in tasks">
                                 <router-link :to="{name: 'StudyPage', params: {slug: item.slug}}">
                                     {{item.title}}
@@ -35,7 +34,6 @@
         data() {
             return {
                 loaded: false,
-                loadedTasks: true,
                 tasks: undefined,
             }
         },
