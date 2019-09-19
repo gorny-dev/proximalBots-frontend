@@ -50,6 +50,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="aboutUs__support">
+                    <img src="https://botland.com.pl/themes/newbotland/img/logo.png">
+                </div>
             </div>
         </transition>
     </div>

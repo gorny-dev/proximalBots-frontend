@@ -12,5 +12,14 @@
     @extend .mt-4;
   }
 
+  &__support{
+    @extend .d-flex;
+    @extend .w-100;
+    @extend .justify-content-center;
+    @extend .pt-5;
+    img{
+      max-width: 500px;
+    }
+  }
 
 }
