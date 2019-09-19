@@ -19,6 +19,7 @@
     @extend .pt-5;
     img{
       max-width: 500px;
+      @extend .w-100;
     }
   }
 
