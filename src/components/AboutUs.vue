@@ -75,11 +75,6 @@
                 apiUrl: this.$apiUrl, //api URL for displaying avatars
             }
         },
-        created() {
-            setTimeout(() => {
-                this.loaded = true;
-            }, this.$preloadTime); //preload animation
-        },
         mounted() {
             this.axios.get(this.$apiUrl + this.$areasUrl).then(response => {
                 this.area = response.data;
