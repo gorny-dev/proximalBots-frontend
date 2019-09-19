@@ -37,13 +37,13 @@
                 tasks: undefined,
             }
         },
-        created() {
-            setTimeout(() => {
-                this.loaded = true;
-            }, this.$preloadTime);
-        },
         mounted() {
-            this.axios.get(this.$apiUrl + this.$tasksUrl).then(response => (this.tasks = response.data)); //request for tasks
+            this.axios.get(this.$apiUrl + this.$tasksUrl).then(response => {
+                this.tasks = response.data;
+                setTimeout(() => {
+                    this.loaded = true;
+                }, this.$preloadTime);
+                }); //request for tasks
         },
     }
 </script>

@@ -36,21 +36,25 @@
         name: 'ProjectPage',
         data() {
             return {
-                loaded: false, //preloader param
                 area: undefined,
                 projectsLink: 'projekty/', //todo: make links depends on fe. language
                 project: undefined,
+                loadedProject: undefined,
+                loadedAreas: undefined 
             }
         },
-        created() {
-            setTimeout(() => {
-                this.loaded = true; //preloader param
-            }, this.$preloadTime); //preload animation
-        },
         mounted() {
-            this.axios.get(this.$apiUrl + this.$projectsUrl + '?slug=' + this.$route.params.slug).then(response => (this.project = response.data[0]))
+            this.axios.get(this.$apiUrl + this.$projectsUrl + '?slug=' + this.$route.params.slug).then(response => {
+                this.project = response.data[0];
+                this.loadedProject = true; 
+                }
+            )
                 .catch(() => this.project = []); //request for current project
-            this.axios.get(this.$apiUrl + this.$areasUrl).then(response => (this.area = response.data)); //request for areas
+            this.axios.get(this.$apiUrl + this.$areasUrl).then(response => {
+                this.area = response.data;
+                this.loadedAreas = true;
+                }
+            ); //request for areas
         },
         methods: {
             doesBelong(id) { //check if area belongs to project
@@ -61,5 +65,10 @@
                 }
             }
         },
+        computed: {
+            loaded(){
+                return this.loadedProject && this.loadedAreas;
+            }
+        }
     }
 </script>

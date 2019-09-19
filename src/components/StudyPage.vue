@@ -78,14 +78,15 @@
             }
         },
         created() {
-            setTimeout(() => {
-                this.loaded = true;
-            }, this.$preloadTime);
+
         },
         mounted() {
             this.axios.get(this.$apiUrl + this.$tasksUrl + '?slug=' + this.$route.params.slug).then(response => {
-                (this.task = response.data[0]);
+                this.task = response.data[0];
                 this.taskLanguages = this.task.content;
+                setTimeout(() => {
+                    this.loaded = true;
+                }, this.$preloadTime);
             }); //request for tasks
         },
         methods: {

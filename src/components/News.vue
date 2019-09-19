@@ -48,12 +48,14 @@
             }
         },
         mounted() {
-            this.axios.get(this.$apiUrl + this.$postUrl).then(response => (this.posts = response.data)); //request for projects
+            this.axios.get(this.$apiUrl + this.$postUrl).then(response => {
+                this.posts = response.data
+                setTimeout(() => {
+                    this.loaded = true;
+                }, this.$preloadTime);
+                }); //request for projects
         },
         created() {
-            setTimeout(() => {
-                this.loaded = true;
-            }, this.$preloadTime);
             window.addEventListener('scroll', this.handleScroll);
         },
         destroyed() {
@@ -70,9 +72,10 @@
         },
         methods: {
             handleScroll() {
-                let scrollPos = document.getElementById('js-news-wrapper').scrollTop;
-                let winHeight = document.getElementById('js-news-wrapper').offsetHeight;
-                let docHeight = document.getElementById('js-news-wrapper').scrollHeight;
+                let element = 'js-news-wrapper';
+                let scrollPos = document.getElementById(element).scrollTop;
+                let winHeight = document.getElementById(element).offsetHeight;
+                let docHeight = document.getElementById(element).scrollHeight;
                 let percent = 100 * scrollPos / (docHeight - winHeight);
                 if (percent > 99) {
                     if (this.limitNumber < this.getAmountOfPosts) this.limitNumber += 3;

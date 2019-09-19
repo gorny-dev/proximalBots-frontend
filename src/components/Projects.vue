@@ -1,6 +1,7 @@
 <template>
     <div class="pageContent__content">
         <preloader :loaded="loaded"/>
+       
         <transition enter-active-class="animated fadeIn" name="contentFadeIn">
             <div class="projects" v-if="loaded">
                 <div class="projects__title">
@@ -64,14 +65,14 @@
             return {
                 categorySlug: undefined,
                 loadCategory: false, //preloader param
-                loaded: false, //preloader param
                 area: undefined,
                 projects: undefined,
+                loadedProjects: undefined,
+                loadedAreas: undefined
             }
         },
         created() {
             setTimeout(() => {
-                this.loaded = true; //preload param
                 this.loadCategory = true; //preload param
             }, this.$preloadTime); //preloader timeout animation
         },
@@ -85,8 +86,14 @@
             }
         },
         mounted() {
-            this.axios.get(this.$apiUrl + this.$projectsUrl).then(response => (this.projects = response.data)); //request for projects
-            this.axios.get(this.$apiUrl + this.$areasUrl).then(response => (this.area = response.data)); //request for areas
+            this.axios.get(this.$apiUrl + this.$projectsUrl).then(response => {
+                this.projects = response.data;
+                this.loadedProjects = true;
+                }); //request for projects
+            this.axios.get(this.$apiUrl + this.$areasUrl).then(response => {
+                this.area = response.data
+                this.loadedAreas = true;
+                }); //request for areas
             if (this.$route.params.area) this.categorySlug = this.$route.params.area; //fire categoryProjects() computed
         },
         computed: {
@@ -106,7 +113,10 @@
                         return Projects; //return Projects into categoryProjects
                     } else return this.projects; //if category slug does not exist return all projects from response to categoryProjects
                 }else return [];
-            }
+            },
+            loaded(){
+                return this.loadedProjects && this.loadedAreas;
+            },
         },
         methods: {
             routerPush(slug) { //function called when clicked on any menu item, slug - slug of area that wanna be displayed

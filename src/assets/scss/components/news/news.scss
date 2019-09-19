@@ -38,11 +38,11 @@
 
           .content__picture img{
             transform: scale(1.1);
-
-            &:before {
-
+            @media screen and (max-width: 1200px){
+              transform: none;
             }
           }
+
 
         }
       }
